@@ -9,14 +9,23 @@ namespace WebMVCR1.Controllers
         //    return View();
         //}
 
-        public string Index()
+        //public string Index()
+        //{
+        //    int hour = DateTime.Now.Hour;
+
+        //    string Greeting = hour < 12 ? "Good Morning" : "Good Afternoon";
+
+        //    return "Hello from Index, and " + Greeting;
+        //}
+
+        public string Index(string hel)
         {
             int hour = DateTime.Now.Hour;
 
-            string Greeting = hour < 12 ? "Good Morning" : "Good Afternoon";
+            string Greeting = hour < 12 ? "Good Morning" : "Good Afternoon" + ", " + hel;
 
-            return "Hello from Index, and " + Greeting;
+            return Greeting;
         }
-        
+
     }
 }
