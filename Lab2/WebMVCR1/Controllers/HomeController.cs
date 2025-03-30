@@ -10,11 +10,19 @@ namespace WebMVCR1.Controllers
         //    return View();
         //}
 
-        public string Index(string hel)
+        public string Index(int hel)
         {
             //string res = ExeEnum();
 
-            string res = ExeStruct();
+            //string res = ExeStruct();
+
+            //string res = StudyCsharp.SetStatus(3);
+
+            //string res = StudyCsharp.ExeSwitch(StudyCsharp.SetStatus(3));
+
+            //string res = StudyCsharp.GetFunction(0, 9);
+
+            string res = ExeFactorial(hel);
 
             return res;
         }
@@ -52,6 +60,17 @@ namespace WebMVCR1.Controllers
             string res1 = $" [{goldBankAccount.accNo}]";
 
             return res + res1;
+        }
+
+        public string ExeFactorial(int x)
+        {
+            int f;
+            bool ok = StudyCsharp.Factorial(x, out f);
+
+            if (ok)
+                return String.Format("Factorial of {0} is {1}", x, f);
+            else
+                return "Cannot calculate factorial";
         }
     }
 }

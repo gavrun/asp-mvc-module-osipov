@@ -1,7 +1,89 @@
-﻿namespace WebMVCR1.Models
+﻿using System.Text;
+
+namespace WebMVCR1.Models
 {
     public class StudyCsharp
     {
+        // 
+
+        public static string SetStatus(int age)
+        {
+            string status = "junior developer";
+
+            if ((age > 2) && (age < 7)) status = "middle developer";
+             else if ((age >= 7) && (age < 15)) status = "senior developer";
+             else if ((age >= 15)) status = "sensei";
+
+            return status;
+        }
+
+        public static string ExeSwitch(string status)
+        {
+            string res;
+
+            switch (status)
+            {
+                case "junior developer":
+                    res = "Learn more!"; break;
+                case "middle developer":
+                    res = "Get more experience!"; break;
+                case "senior developer":
+                    res = "Manage others!"; break;
+                case "sensei":
+                    res = "Teach others?!"; break;
+
+                default:
+                    res = "I don't know what to do.";
+                    break;
+            }
+
+            return res;
+        }
+
+        public static string GetFunction(double x1, double x2)
+        {
+            StringBuilder str = new StringBuilder();
+
+            double x = x1;
+
+            do
+            {
+                str.AppendFormat("x = {0:0.##} : y = {1:0.##};<br> ", x, Math.Pow(x,3)); 
+                
+                x = x + 0.5;
+            }
+            while (x <= x2);
+
+            return str.ToString();
+        }
+
+        public static bool Factorial(int n, out int answer)
+        {
+            int k;
+            int f;
+            bool ok = true;
+
+            if (n < 0)
+                ok = false;
+            try
+            {
+                checked
+                {
+                    f = 1;
+                    for (k = 2; k <= n; ++k)
+                    {
+                        f = f * k;
+                    }
+                }
+            }
+            catch (Exception)
+            {
+                f = 0;
+                ok = false;
+            }
+            answer = f;
+            return ok;
+        }
     }
 
     public enum AccountType
