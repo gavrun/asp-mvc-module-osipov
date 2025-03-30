@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using WebMVCR1.Models;
 
 namespace WebMVCR1.Controllers
 {
@@ -9,20 +10,9 @@ namespace WebMVCR1.Controllers
         //    return View();
         //}
 
-        //public string Index()
-        //{
-        //    int hour = DateTime.Now.Hour;
-
-        //    string Greeting = hour < 12 ? "Good Morning" : "Good Afternoon";
-
-        //    return "Hello from Index, and " + Greeting;
-        //}
-
         public string Index(string hel)
         {
-            int hour = DateTime.Now.Hour;
-
-            string Greeting = hour < 12 ? "Good Morning" : "Good Afternoon" + ", " + hel;
+            string Greeting = ModelClass.ModelHello() + ", " + hel;
 
             return Greeting;
         }
