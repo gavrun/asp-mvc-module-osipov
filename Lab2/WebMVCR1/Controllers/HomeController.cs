@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using System.Text;
 using WebMVCR1.Models;
 
 namespace WebMVCR1.Controllers
@@ -26,7 +27,9 @@ namespace WebMVCR1.Controllers
 
             //string res = ExeTriangle();
 
-            string res = ExeCircle();
+            //string res = ExeCircle();
+
+            string res = ExePolim();
 
             return res;
         }
@@ -93,6 +96,24 @@ namespace WebMVCR1.Controllers
             string sq = String.Format("Aread of shape named {0} is: {1:0.##}", cir1.Name, cir1.Area);
 
             return sq;
+        }
+
+        public string ExePolim()
+        {
+            StringBuilder str = new StringBuilder();
+
+            Shape[] sh = {
+                 new Triangle(1,2,3),
+                 new Circle(5),
+                 new Triangle(5,6,8) 
+            };
+
+            foreach (Shape item in sh)
+            {
+                str.AppendFormat("This is shape of {0}", item.Name + "<p>");
+            }
+
+            return str.ToString();
         }
     }
 }

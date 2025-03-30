@@ -106,9 +106,12 @@ namespace WebMVCR1.Models
         }
     }
 
-    public class Triangle
+    public class Triangle : Shape
     {
-        public double Sta { get; set; }
+        //public double Sta { get; set; }
+
+        // Sta > St
+
         public double Stb { get; set; }
         public double Stc { get; set; }
 
@@ -119,7 +122,7 @@ namespace WebMVCR1.Models
         //        return String.Format("\"Triangle with sides {0}, {1} and {2}\"", Sta, Stb, Stc);
         //    }
         //}
-        public string Name => String.Format("\"Triangle with sides {0}, {1} and {2}\"", Sta, Stb, Stc);
+        public override string Name => String.Format("\"Triangle with sides {0}, {1} and {2}\"", St, Stb, Stc);
 
         //public double Perimeter
         //{
@@ -129,30 +132,31 @@ namespace WebMVCR1.Models
         //        return p;
         //    }
         //}
-        public double Perimeter => Math.Round(Sta + Stb + Stc);
+        public double Perimeter => Math.Round(St + Stb + Stc);
 
         public double Area
         {
             get
             {
-                double sq = Math.Sqrt(Perimeter / 2 * (Perimeter / 2 - Sta) * (Perimeter / 2 - Stb) * (Perimeter / 2 - Stc));
+                double sq = Math.Sqrt(Perimeter / 2 * (Perimeter / 2 - St) * (Perimeter / 2 - Stb) * (Perimeter / 2 - Stc));
                 return sq;
             }
         }
 
         public Triangle(double a, double b, double c)
         {
-            Sta = a;
+            St = a;
             Stb = b;
             Stc = c;
         }
     }
 
-    public class Circle
+    public class Circle : Shape
     {
-        public double St { get; set; }
+        //public double St { get; set; }
 
-        public string Name
+        // override
+        public override string Name
         {
             get
             {
@@ -178,6 +182,16 @@ namespace WebMVCR1.Models
                 double sq = Math.PI * St * St;
                 return sq;
             }
+        }
+    }
+
+    public class Shape
+    {
+        public double St { get; set; }
+
+        virtual public string Name
+        {
+            get { return String.Format("\"Shape\""); }
         }
     }
 }
