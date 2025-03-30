@@ -10,7 +10,7 @@ namespace WebMVCR1.Controllers
         //    return View();
         //}
 
-        public string Index(int hel)
+        public string Index(int? hel)
         {
             //string res = ExeEnum();
 
@@ -22,7 +22,11 @@ namespace WebMVCR1.Controllers
 
             //string res = StudyCsharp.GetFunction(0, 9);
 
-            string res = ExeFactorial(hel);
+            //string res = ExeFactorial(hel);
+
+            //string res = ExeTriangle();
+
+            string res = ExeCircle();
 
             return res;
         }
@@ -71,6 +75,24 @@ namespace WebMVCR1.Controllers
                 return String.Format("Factorial of {0} is {1}", x, f);
             else
                 return "Cannot calculate factorial";
+        }
+
+        public string ExeTriangle()
+        {
+            Triangle tr1 = new Triangle(3, 5, 6);
+
+            string sq1 = String.Format("The area of the figure {0} is: {1:0.##}", tr1.Name, tr1.Area);
+
+            return sq1;
+        }
+
+        public string ExeCircle()
+        {
+            Circle cir1 = new Circle(3);
+
+            string sq = String.Format("Aread of shape named {0} is: {1:0.##}", cir1.Name, cir1.Area);
+
+            return sq;
         }
     }
 }
