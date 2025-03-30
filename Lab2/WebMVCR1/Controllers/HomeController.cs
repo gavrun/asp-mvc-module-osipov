@@ -11,27 +11,36 @@ namespace WebMVCR1.Controllers
         //    return View();
         //}
 
-        public string Index(int? hel)
+        //public string Index(int? hel)
+        //{
+        //    //string res = ExeEnum();
+
+        //    //string res = ExeStruct();
+
+        //    //string res = StudyCsharp.SetStatus(3);
+
+        //    //string res = StudyCsharp.ExeSwitch(StudyCsharp.SetStatus(3));
+
+        //    //string res = StudyCsharp.GetFunction(0, 9);
+
+        //    //string res = ExeFactorial(hel);
+
+        //    //string res = ExeTriangle();
+
+        //    //string res = ExeCircle();
+
+        //    //string res = ExePolim();
+
+        //    string res = ExeCollection();
+
+        //    return res;
+        //}
+
+        public ContentResult Index()
         {
-            //string res = ExeEnum();
+            string result = ExeCollection();
 
-            //string res = ExeStruct();
-
-            //string res = StudyCsharp.SetStatus(3);
-
-            //string res = StudyCsharp.ExeSwitch(StudyCsharp.SetStatus(3));
-
-            //string res = StudyCsharp.GetFunction(0, 9);
-
-            //string res = ExeFactorial(hel);
-
-            //string res = ExeTriangle();
-
-            //string res = ExeCircle();
-
-            string res = ExePolim();
-
-            return res;
+            return Content(result, "text/html");
         }
 
         public string ExeEnum()
@@ -105,10 +114,34 @@ namespace WebMVCR1.Controllers
             Shape[] sh = {
                  new Triangle(1,2,3),
                  new Circle(5),
-                 new Triangle(5,6,8) 
+                 new Triangle(5,6,8)
             };
 
             foreach (Shape item in sh)
+            {
+                str.AppendFormat("This is shape of {0}", item.Name + "<p>");
+            }
+
+            return str.ToString();
+        }
+
+        public string ExeCollection()
+        {
+            List<Circle> cirs = new List<Circle>
+            {
+                new Circle(12),
+                new Circle(5),
+                new Circle(15),
+                new Circle(6)
+            };
+
+            cirs.Add(new Circle(7));
+
+            cirs.Sort();
+
+            StringBuilder str = new StringBuilder();
+
+            foreach (Shape item in cirs)
             {
                 str.AppendFormat("This is shape of {0}", item.Name + "<p>");
             }
