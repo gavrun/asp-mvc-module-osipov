@@ -28,6 +28,9 @@ namespace MvcCreditApp
                 .AddEntityFrameworkStores<ApplicationDbContext>();
             builder.Services.AddControllersWithViews();
 
+            // Cache
+            builder.Services.AddOutputCache();
+
             var app = builder.Build();
 
             // Seed data
@@ -55,7 +58,13 @@ namespace MvcCreditApp
 
             app.UseRouting();
 
+            //app.UseResponseCaching(); // max-age 0
+
+            app.UseOutputCache(); 
+
             app.UseAuthorization();
+
+            //app.UseResponseCaching(); // max-age 60 // not forced on client
 
             app.MapControllerRoute(
                 name: "default",

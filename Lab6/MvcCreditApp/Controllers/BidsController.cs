@@ -4,6 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
+using Microsoft.AspNetCore.OutputCaching;
 using Microsoft.EntityFrameworkCore;
 using MvcCreditApp.Data;
 using MvcCreditApp.Models;
@@ -20,6 +21,8 @@ namespace MvcCreditApp.Controllers
         }
 
         // GET: Bids
+        [OutputCache(Duration = 60)]
+        //[ResponseCache(Duration = 60, Location = ResponseCacheLocation.Any, NoStore = false)]
         public async Task<IActionResult> Index()
         {
             return View(await _context.Bids.ToListAsync());
