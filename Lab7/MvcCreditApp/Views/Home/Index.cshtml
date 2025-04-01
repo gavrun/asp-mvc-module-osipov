@@ -1,0 +1,101 @@
+﻿@{
+    ViewData["Title"] = "Home Page";
+}
+
+<script>
+    function funBegin() {
+        alert("Start ajax");
+    }
+
+    function funSuccess(data) {
+        alert("Ajax completed, recieved:\n" + data);
+        console.log(data);
+    }
+
+    function funComplete(request, status) {
+        alert("Status:\n" + status);
+    }
+</script>
+
+@* <div class="text-center"> *@
+@*     <h1 class="display-4">Welcome</h1> *@
+@*     <p>Learn about <a href="https://learn.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p> *@
+@* </div> *@
+
+<div class="row">
+    <div class="col-md-4">
+        <h3>Credits</h3>
+
+        <table class="table-bordered">
+            <tr>
+                <td>
+                    <p>Credit type</p>
+                </td>
+                <td>
+                    <p>Credit period</p>
+                </td>
+                <td>
+                    <p>Max sum</p>
+                </td>
+                <td>
+                    <p>Interest rate</p>
+                </td>
+            </tr>
+
+            @foreach (var c in ViewBag.Credits)
+            {
+                <tr>
+                    <td>
+                        <p>@c.Head</p>
+                    </td>
+                    <td>
+                        <p>@c.Period</p>
+                    </td>
+                    <td>
+                        <p>@c.Sum</p>
+                    </td>
+                    <td>
+                        <p>@c.Procent</p>
+                    </td>
+                </tr>
+            }
+
+        </table>
+
+        <p>
+            <a asp-controller="Home" asp-action="CreateBid">Apply for credit &raquo;</a>
+        </p>
+    </div>
+</div>
+
+<div>
+    <h5>All credit applicants list</h5>
+</div>
+<div id="results" >
+    <form data-ajax="true"
+          data-ajax-url="/Home/BidSearch"
+          data-ajax-update="#results" 
+          data-ajax-mode="after"
+          data-ajax-begin="funBegin"
+          data-ajax-success="funSuccess"
+          data-ajax-complete="funComplete" >
+        
+        <input type="text" name="Name" />
+        <input type="submit" value="Search" />
+    </form>
+
+    @section scripts {
+
+    @* <script src="~/lib/jquery/dist/jquery.min.js"></script>   *@
+    @* <script src="~/lib/jquery-ajax-unobtrusive/jquery.unobtrusive-ajax.min.js"></script> *@
+
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-ajax-unobtrusive/3.2.6/jquery.unobtrusive-ajax.js" 
+                integrity="sha256-v2nySZafnswY87um3ymbg7p9f766IQspC5oqaqZVX2c=" 
+                crossorigin="anonymous"> 
+        </script>
+    }
+</div>
+
+
+
+        
