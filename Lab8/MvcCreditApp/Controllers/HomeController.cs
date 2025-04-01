@@ -2,6 +2,7 @@ using System.Diagnostics;
 using Microsoft.AspNetCore.Mvc;
 using MvcCreditApp.Data;
 using MvcCreditApp.Models;
+using Microsoft.AspNetCore.Authorization;
 
 namespace MvcCreditApp.Controllers
 {
@@ -43,6 +44,7 @@ namespace MvcCreditApp.Controllers
             ViewBag.Credits = allCredits;
         }
 
+        [Authorize]
         [HttpGet]
         public ActionResult CreateBid()
         {
