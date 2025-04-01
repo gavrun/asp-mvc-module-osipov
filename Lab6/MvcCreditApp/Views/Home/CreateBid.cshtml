@@ -1,0 +1,68 @@
+﻿
+@{
+    ViewData["Title"] = "CreateBid";
+}
+
+<h1>CreateBid</h1>
+
+<h3>Existing requests</h3>
+
+<table class="table">
+    <tr>
+        <td>
+            <p>Name</p>
+        </td>
+        <td>
+            <p>Credit type</p>
+        </td>
+    </tr>
+
+    @foreach (var c in ViewBag.Bids)
+    {
+        <tr>
+            <td>
+                <p>@c.Name</p>
+            </td>
+            <td>
+                <p>@c.CreditHead</p>
+            </td>
+        </tr>
+    }
+
+</table>
+
+<h3>Request form</h3>
+
+<form method="post" >
+    <table>
+        <tr>
+            <td>
+                <p>Your Name:</p>
+            </td>
+            <td>
+                <input type="text" name="Name" />
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <p>Credit type:</p>
+            </td>
+            <td>
+                <select name="CreditHead">
+
+                    @foreach (var cr in ViewBag.Credits)
+                    {
+                        <option>@cr.Head</option>
+                    }
+
+                </select>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <input type="submit" value="Send" />
+            </td>
+            <td></td>
+        </tr>
+    </table>
+</form>
